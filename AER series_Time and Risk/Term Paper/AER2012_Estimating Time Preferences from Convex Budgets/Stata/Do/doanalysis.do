@@ -1,0 +1,5 @@
+/* Estimating Time Preferences with Convex Budgets *//*** doanalysis.do ****//* This do file sets memory, reads in data set and log and calls 3 do files1. Aggregate Analysis Final.do - runs aggregate analysis including: - Table 2: Aggregate Estimates - Table A1: Background Consumption - Table A2: NLS censoring adjustment2. Individual Analysis Final.do - runs individual anaylsis including: - Table 4: Individual Estimate Summary - Table A6-A7: Individual Estimates - Figure 4: Comparison with DMPL methodology3. Individual Robustness.do - runs individual analysis with alternative restriction of background parameters. - Table A3-A5: Individual Estimates*//* Set Memory */clearset mem 100m
+/* Change Path Accordingly*/
+cd "~/Dropbox/AndreoniSprenger/Estimation/Stata"
+
+/* Write Log File */ capture log closelog using "Logs/estimationlog.txt", text replacelog off/* Execute Setup */use "Data/dataset.dta"do "Do/Aggregate Analysis Final.do"do "Do/Individual Robustness.do"do "Do/Individual Analysis Final.do"/* Close Log */log close
