@@ -1,0 +1,5 @@
+/***** Time Preferences are Not Risk Preferences *****//*** doanalysis.do ****//* This do file sets memory and logs, calls data, and calls 4 additional do files.1. predictedgraph50100.do which produces Figure 2 in the paper and other graphics related tothe 50-50/100-100 conditions used in presentations.2. predictedgraphuncertain.do which produces Figures 4, 5, A1, A2 in the paper.3. tablesandstats.do which produces Table 2 and statistics noted throughout the text
+4. histograms.do which produces Figure 3 and Figure 6.*//* Set Memory */clearset mem 100m/* Change Path Accordingly*/cd "~/Dropbox/AndreoniSprenger/TimeRisk/Stata/"/* Write Log File */ capture log closelog using "Logs/risktime.txt", text replacelog off
+
+/*Read in Data */use "Data/dataset.dta"
+/* Call Do-Files */do "Do/predictedgraph50100.do" do "Do/predictedgraphuncertain.do" do "Do/tablesandstats.do"do "Do/histograms.do"/* Close Log */log close
